@@ -35,6 +35,12 @@
 ~ pip freeze (debe aparecer la lib pyke 1.1.1)
 ```
 
+- Ejecutar el script de driver
+
+```
+~ python driver.py
+```
+
 #### Fix - Errores
 
 - Si se tiene versiones de python >= 3.11.\* y aparece un error relacionado con el modo "U"
