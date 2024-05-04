@@ -1,0 +1,5 @@
+# bateria.kfb
+caracteristicas(DW, 15, 2000, 'madera')
+caracteristicas(DW, 15, 2000, 'metal')
+caracteristicas(MAPEX, 45, 6000, 'madera')
+caracteristicas(MAPEX, 25, 2500, 'madera')

@@ -1,0 +1,101 @@
+# bc_bateria.krb
+
+es_liviana
+    use es_liviana($nombre, $precio, $material)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        check $peso <= 20
+
+es_pesada
+    use es_pesada($nombre, $precio, $material)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        check $peso > 20
+
+es_liviana_es_barata
+    use es_liviana_es_barata($nombre, $material)
+    when
+        es_liviana($nombre, $precio, $material)
+        check $precio <= 3000
+
+es_liviana_es_cara
+    use es_liviana_es_cara($nombre, $material)
+    when
+        es_liviana($nombre, $precio, $material)
+        check $precio > 3000
+
+es_pesada_es_barata
+    use es_pesada_es_barata($nombre, $material)
+    when
+        es_pesada($nombre, $precio, $material)
+        check $precio <= 3000
+
+es_pesada_es_cara
+    use es_pesada_es_cara($nombre, $material)
+    when
+        es_pesada($nombre, $precio, $material)
+        check $precio > 3000
+
+es_liviana_es_barata_es_madera
+    use tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        es_liviana_es_barata($nombre, $material)
+        check $material == "madera"
+        $mensaje = "Batería Acústica Principiantes"
+
+es_liviana_es_cara_es_madera
+    use tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        es_liviana_es_cara($nombre, $material)
+        check $material == "madera"
+        $mensaje = "Batería Acústica Profesional Compacta"
+
+es_liviana_es_barata_es_metal
+    use tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        es_liviana_es_barata($nombre, $material)
+        check $material == "metal"
+        $mensaje = "Batería Electrónica Junior"
+
+es_liviana_es_cara_es_metal
+    use tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        es_liviana_es_cara($nombre, $material)
+        check $material == "metal"
+        $mensaje = "Batería Electrónica Semi-Profesional"
+
+es_pesada_es_barata_es_madera
+    use tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        bateria.es_pesada_es_liviana($nombre, $material)
+        check $material == "madera"
+        $mensaje = "Batería Acústica de Segunda"
+
+es_pesada_es_cara_es_madera
+    use tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        es_pesada_es_cara($nombre, $material)
+        check $material == "madera"
+        $mensaje = "Batería Acústica Profesional"
+
+es_pesada_es_barata_es_metal
+    use tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        es_pesada_es_barata($nombre, $material)
+        check $material == "metal"
+        $mensaje = "Batería Acústica Profesional de Segunda"
+
+es_pesada_es_cara_es_metal
+    use tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        es_pesada_es_cara($nombre, $material)
+        check $material == "metal"
+        $mensaje = "Batería Acústica Pro-Profesional"
