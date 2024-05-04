@@ -1,0 +1,155 @@
+# fc_bateria_questions.krb
+
+es_liviana
+    foreach
+        # bateria.caracteristicas($nombre, $peso, $precio, $material)
+        questions.nombre($nombre)
+        questions.peso($peso)
+        questions.precio($precio)
+        questions.material($material)
+        check $peso <= 20
+    assert
+        bateria.es_liviana($nombre, $precio, $material)
+
+es_pesada
+    foreach
+        # bateria.caracteristicas($nombre, $peso, $precio, $material)
+        questions.nombre($nombre)
+        questions.peso($peso)
+        questions.precio($precio)
+        questions.material($material)
+        check $peso > 20
+    assert
+        bateria.es_pesada($nombre, $precio, $material)
+
+es_liviana_es_barata
+    foreach
+        bateria.es_liviana($nombre, $precio, $material)
+        check $precio <= 3000
+    assert
+        bateria.es_liviana_es_barata($nombre, $material)
+
+es_liviana_es_cara
+    foreach
+        bateria.es_liviana($nombre, $precio, $material)
+        check $precio > 3000
+    assert
+        bateria.es_liviana_es_cara($nombre, $material)
+
+es_pesada_es_barata
+    foreach
+        bateria.es_pesada($nombre, $precio, $material)
+        check $precio <= 3000
+    assert
+        bateria.es_pesada_es_barata($nombre, $material)
+
+es_pesada_es_cara
+    foreach
+        bateria.es_pesada($nombre, $precio, $material)
+        check $precio > 3000
+    assert
+        bateria.es_pesada_es_cara($nombre, $material)
+
+es_liviana_es_barata_es_madera
+    foreach
+        # bateria.caracteristicas($nombre, $peso, $precio, $material)
+        questions.nombre($nombre)
+        questions.peso($peso)
+        questions.precio($precio)
+        questions.material($material)
+        bateria.es_liviana_es_barata($nombre, $material)
+        check $material == "madera"
+        $mensaje = "Batería Acústica Principiantes"
+    assert
+        bateria.tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+
+es_liviana_es_cara_es_madera
+    foreach
+        # bateria.caracteristicas($nombre, $peso, $precio, $material)
+        questions.nombre($nombre)
+        questions.peso($peso)
+        questions.precio($precio)
+        questions.material($material)
+        bateria.es_liviana_es_cara($nombre, $material)
+        check $material == "madera"
+        $mensaje = "Batería Acústica Profesional Compacta"
+    assert
+        bateria.tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+
+es_liviana_es_barata_es_metal
+    foreach
+        # bateria.caracteristicas($nombre, $peso, $precio, $material)
+        questions.nombre($nombre)
+        questions.peso($peso)
+        questions.precio($precio)
+        questions.material($material)
+        bateria.es_liviana_es_barata($nombre, $material)
+        check $material == "metal"
+        $mensaje = "Batería Electrónica Junior"
+    assert
+        bateria.tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+
+es_liviana_es_cara_es_metal
+    foreach
+        # bateria.caracteristicas($nombre, $peso, $precio, $material)
+        questions.nombre($nombre)
+        questions.peso($peso)
+        questions.precio($precio)
+        questions.material($material)
+        bateria.es_liviana_es_cara($nombre, $material)
+        check $material == "metal"
+        $mensaje = "Batería Electrónica Semi-Profesional"
+    assert
+        bateria.tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+
+es_pesada_es_barata_es_madera
+    foreach
+        # bateria.caracteristicas($nombre, $peso, $precio, $material)
+        questions.nombre($nombre)
+        questions.peso($peso)
+        questions.precio($precio)
+        questions.material($material)
+        bateria.es_pesada_es_liviana($nombre, $material)
+        check $material == "madera"
+        $mensaje = "Batería Acústica de Segunda"
+    assert
+        bateria.tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+
+es_pesada_es_cara_es_madera
+    foreach
+        # bateria.caracteristicas($nombre, $peso, $precio, $material)
+        questions.nombre($nombre)
+        questions.peso($peso)
+        questions.precio($precio)
+        questions.material($material)
+        bateria.es_pesada_es_cara($nombre, $material)
+        check $material == "madera"
+        $mensaje = "Batería Acústica Profesional"
+    assert
+        bateria.tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+
+es_pesada_es_barata_es_metal
+    foreach
+        # bateria.caracteristicas($nombre, $peso, $precio, $material)
+        questions.nombre($nombre)
+        questions.peso($peso)
+        questions.precio($precio)
+        questions.material($material)
+        bateria.es_pesada_es_barata($nombre, $material)
+        check $material == "metal"
+        $mensaje = "Batería Acústica Profesional de Segunda"
+    assert
+        bateria.tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+
+es_pesada_es_cara_es_metal
+    foreach
+        # bateria.caracteristicas($nombre, $peso, $precio, $material)
+        questions.nombre($nombre)
+        questions.peso($peso)
+        questions.precio($precio)
+        questions.material($material)
+        bateria.es_pesada_es_cara($nombre, $material)
+        check $material == "metal"
+        $mensaje = "Batería Acústica Pro-Profesional"
+    assert
+        bateria.tipo_bateria($nombre, $peso, $precio, $material, $mensaje)

@@ -1,0 +1,23 @@
+# questions.kqb
+
+nombre($ans)
+        Cuál es el nombre?
+    ---
+    $ans = string
+
+peso($ans)
+        Cuánto pesa?
+    ---
+    $ans = float(1-999)
+    1000- ! Es mucho peso!
+
+precio($ans)
+        Cuánto cuesta?
+    ---
+    $ans = float(1-99999)
+    100000- ! Es demasiado costoso!
+
+material($ans)
+        De qué material está hecho?
+    ---
+    $ans = string

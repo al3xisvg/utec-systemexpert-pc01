@@ -30,6 +30,20 @@ def bc_test():
             print("[" + str(i) + "]", vars['mensaje'], ": ", vars['nombre'], ' | ', vars['peso'], ' | ', vars['precio'], ' | ', vars['material'])
     print("[INFO] Terminado !!!")
 
+def fc_questions_test():
+    engine.reset()
+    engine.activate('fc_bateria_questions')
+    print("[INFO] Haciendo preguntas...")
+    with engine.prove_goal(
+        'bateria.tipo_bateria($nombre, $peso, $precio, $material, $mensaje)'
+    ) as gen:
+        i = 0
+        for vars, plan in gen:
+            i += 1
+            print("[" + str(i) + "]", vars['mensaje'], ": ", vars['nombre'], ' | ', vars['peso'], ' | ', vars['precio'], ' | ', vars['material'])
+    print("[INFO] Terminado !!!")
+
 if __name__ == "__main__":
     fc_test()
     bc_test()
+    fc_questions_test()
