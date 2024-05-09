@@ -99,3 +99,35 @@ es_pesada_es_cara_es_metal
         es_pesada_es_cara($nombre, $material)
         check $material == "metal"
         $mensaje = "Batería Acústica Pro-Profesional"
+
+es_liviana_es_barata_es_otro
+    use tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        es_liviana_es_barata($nombre, $material)
+        check $material != "madera" and $material != "metal"
+        $mensaje = "Batería liviana, barata pero no se con exactitud el tipo"
+
+es_liviana_es_cara_es_otro
+    use tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        es_liviana_es_cara($nombre, $material)
+        check $material != "madera" and $material != "metal"
+        $mensaje = "Batería liviana, cara pero no se con exactitud el tipo"
+
+es_pesada_es_barata_es_otro
+    use tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        es_pesada_es_barata($nombre, $material)
+        check $material != "madera" and $material != "metal"
+        $mensaje = "Batería pesada, barata pero no se con exactitud el tipo"
+
+es_pesada_es_cara_es_otro
+    use tipo_bateria($nombre, $peso, $precio, $material, $mensaje)
+    when
+        bateria.caracteristicas($nombre, $peso, $precio, $material)
+        es_pesada_es_cara($nombre, $material)
+        check $material != "madera" and $material != "metal"
+        $mensaje = "Batería pesada, cara pero no se con exactitud el tipo"

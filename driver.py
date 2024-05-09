@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import with_statement # Siempre debe ir primero
 from pyke import knowledge_engine, krb_traceback, goal
 import sys
@@ -16,7 +17,7 @@ def fc_test():
         for vars, plan in gen:
             i += 1
             print("[" + str(i) + "]", vars['mensaje'], ": ", vars['nombre'], ' | ', vars['peso'], ' | ', vars['precio'], ' | ', vars['material'])
-    print("[INFO] Terminado !!!")
+    print("[INFO] Terminado !!!\n")
 
 def bc_test():
     print("[TIPO] Backward Chaining")
@@ -28,12 +29,12 @@ def bc_test():
         for vars, plan in gen:
             i += 1
             print("[" + str(i) + "]", vars['mensaje'], ": ", vars['nombre'], ' | ', vars['peso'], ' | ', vars['precio'], ' | ', vars['material'])
-    print("[INFO] Terminado !!!")
+    print("[INFO] Terminado !!!\n\n")
 
 def fc_questions_test():
     engine.reset()
-    engine.activate('fc_bateria_questions')
     print("[INFO] Haciendo preguntas...")
+    engine.activate('fc_bateria_questions')
     with engine.prove_goal(
         'bateria.tipo_bateria($nombre, $peso, $precio, $material, $mensaje)'
     ) as gen:
@@ -41,7 +42,9 @@ def fc_questions_test():
         for vars, plan in gen:
             i += 1
             print("[" + str(i) + "]", vars['mensaje'], ": ", vars['nombre'], ' | ', vars['peso'], ' | ', vars['precio'], ' | ', vars['material'])
-    print("[INFO] Terminado !!!")
+        if i <= 0:
+            print("[INFO] No pude reconocer el tipo de bateria")
+    print("\n[INFO] Terminado !!!\n")
 
 if __name__ == "__main__":
     fc_test()
